@@ -19,23 +19,21 @@ body{
 
 /* ===== NAVBAR ===== */
 header{
-  position:sticky;
-  top:0;
-  width:100%;
-  padding:28px 80px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:999;
-  
-  /* coffee dark background */
-  background: linear-gradient(
-    90deg,
-    #2b0f0f,
-    #3b1414,
-    #2b0f0f
-  );
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 80px;
+  background: #604735;
+  z-index: 10000;
 }
+
 
 
 .logo{
@@ -117,7 +115,7 @@ nav a:hover{ opacity:1; }
 }
 nav a{
   margin-left:40px;
-  font-size:14px;
+  font-size:15px;
   color:#ffffff;
   opacity:0.8;
   position:relative;
@@ -434,11 +432,29 @@ html{
   box-shadow:0 15px 35px rgba(201,122,58,0.45);
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  color: #ffffff !important;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.hero{
+  padding-top: 70px;
+}
+
+
 
 
 </style>
 </head>
 <body>
+
 
 <header>
   <div class="logo"><span>HAVENS.</span></div>
@@ -469,17 +485,17 @@ html{
         <hr>
         <div class="menu-items">
             <div class="menu-item">
-                <img src="hot coffe.jpeg" alt="Hot Beverages">
+                <img src="images/hot.jpeg" alt="Hot Beverages">
                 <h3>Hot Beverages</h3>
                 <p>Wide range of steaming hot coffee to make you fresh and light.</p>
             </div>
             <div class="menu-item">
-                <img src="cold cofeee.jpeg" alt="Cold Beverages">
+                <img src="images/cold.jpeg" alt="Cold Beverages">
                 <h3>Cold Beverages</h3>
                 <p>Creamy and frothy cold coffee to make you cool.</p>
             </div>
             <div class="menu-item">
-                <img src="refereshement.jpeg" alt="Refreshment">
+                <img src="images/refereshement.jpeg" alt="Refreshment">
                 <h3>Refreshment</h3>
                 <p>Fruit and icy refreshing drink to make you feel refreshed.</p>
             </div>
@@ -498,7 +514,7 @@ html{
 
     <!-- Image -->
     <div class="about-img">
-      <img src="cofee shop photo.jpeg" alt="Coffee Talk">
+      <img src="images/coffee.jpeg" alt="Coffee Talk">
     </div>
 
     <!-- Content -->
