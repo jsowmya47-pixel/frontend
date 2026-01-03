@@ -1,878 +1,556 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MY PORTFOLIO!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>☕HAVENS Coffee shop</title>
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
 
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+body{
+  background:#1b1b1c;
+}
 
-  <style>
-    :root{
-      --bg:#050505;
-      --muted:#c9c9c9;
-      --accent:#c94a44;   /* warm red */
-      --accent-2:#7b2b28;
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(201,74,68,0.06);
-      --max-width:1200px;
-    }
+/* ===== NAVBAR ===== */
+header{
+  position:sticky;
+  top:0;
+  width:100%;
+  padding:28px 80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+  
+  /* coffee dark background */
+  background: linear-gradient(
+    90deg,
+    #2b0f0f,
+    #3b1414,
+    #2b0f0f
+  );
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-    }
 
-    .page{
-      max-width:var(--max-width);
-      margin:0 auto;
-      padding:36px 28px;
-    }
+.logo{
+  font-size:28px;
+  font-weight:600;
+}
+.logo span{ color:#c97a3a; }
 
-    /* NAV */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-    }
+nav a{
+  margin-left:40px;
+  font-size:14px;
+  opacity:0.8;
+  text-decoration:none;
+  color:#fff;
+}
+nav a:hover{ opacity:1; }
 
-    .brand{
-      font-family: "Montserrat", sans-serif;
-      font-weight:700;
-      color:var(--accent);
-      letter-spacing:0.4px;
-      font-size:28px;
-    }
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  align-items:center;
+  padding:0 80px;
+  background:
+    
+    url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover no-repeat;
+}
 
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:28px;
-      margin:0;
-      padding:0;
-      align-items:center;
-    }
+.hero-text{
+  max-width:560px;
+  animation:fadeLeft 1.2s ease;
+}
 
-    nav a::after {
+.hero-text h1{
+  font-size:64px;
+  line-height:1.1;
+  margin-bottom:28px;
+}
+
+.hero-text p{
+  font-size:16px;
+  opacity:0.8;
+  line-height:1.7;
+  margin-bottom:40px;
+}
+
+.btn{
+  padding:14px 36px;
+  background:#fff;
+  color:#af9b9b;
+  border:none;
+  border-radius:8px;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeLeft{
+  from{ opacity:0; transform:translateX(-40px); }
+  to{ opacity:1; transform:translateX(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  header{ padding:20px; }
+  nav{ display:none; }
+  .hero{
+    grid-template-columns:1fr;
+    padding:0 20px;
+    text-align:center;
+  }
+  .hero-text h1{ font-size:42px; }
+}
+nav a{
+  margin-left:40px;
+  font-size:14px;
+  color:#ffffff;
+  opacity:0.8;
+  position:relative;
+  transition:color 0.3s ease, opacity 0.3s ease;
+}
+
+/* COLOR CHANGE ON HOVER */
+nav a:hover{
+  color:#c97a3a;   /* coffee color */
+  opacity:1;
+}
+
+/* UNDERLINE ANIMATION */
+nav a::after{
   content:"";
   position:absolute;
   left:0;
-  right:0;
-  bottom:-8px;
-  height:3px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  border-radius:3px;
-  transform:scaleX(0);
-  transform-origin:center;
-  transition:transform 0.3s ease;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background:#c97a3a;
+  transition:width 0.3s ease;
 }
 
-nav a:hover::after,
-nav a.active::after {
-  transform:scaleX(1);
+nav a:hover::after{
+  width:100%;
+}
+html{
+  scroll-behavior: smooth;
+}
+.about{
+  scroll-margin-top:100px;
+}
+/* ===== ABOUT SECTION ===== */
+.about{
+  background:#faf4f2;
+  padding:100px 80px;
 }
 
-    nav a.active::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:-8px;
-      height:3px;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      border-radius:3px;
-      transform-origin:center;
-    }
+.about-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:80px;
+}
 
-    /* HERO LAYOUT */
-    .hero{
-      display:flex;
-      gap:48px;
-      align-items:center;
-      margin-top:34px;
-      padding-bottom:40px;
-    }
+/* IMAGE */
+.about-img img{
+  width:380px;
+  height:380px;
+  object-fit:cover;
+  border-radius:50%;
+}
 
-    /* left image column */
-    .left{
-      width:46%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      min-height:520px;
-    }
+/* CONTENT */
+.about-content h2{
+  font-size:32px;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
 
-    
-    .portrait-wrap img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transform:translateX(-6%);
-      mix-blend-mode:normal;
-      /* make subject slightly darker so red shows through */
-      filter:contrast(0.9) saturate(0.95);
-    }
+.underline{
+  display:block;
+  width:60px;
+  height:4px;
+  background:#f9e502;
+  margin-bottom:30px;
+}
 
-    /* right column: text */
-    .right{
-      width:54%;
-      padding-right:18px;
-    }
+.about-content p{
+  font-size:16px;
+  line-height:1.8;
+  color:#444;
+  max-width:520px;
+}
 
-    .tagline{
-      font-size:32px;
-      margin:0 0 10px;
-      color:#fff;
-      font-weight:800;
-    }
+/* SOCIAL ICONS */
+.socials{
+  margin-top:30px;
+  display:flex;
+  gap:20px;
+}
 
-    .tagline small{
-      display:block;
-      font-family: "Poppins";
-      font-weight:600;
-      font-size:42px;
-      margin-top:6px;
-      color:#fff;
-    }
+.socials a{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid #333;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#333;
+  font-weight:600;
+  transition:0.3s;
+}
 
-    .name{
-      color:var(--accent);
-      margin-left:6px;
-      font-weight:800;
-      font-family: "Montserrat", sans-serif;
-    }
+.socials a:hover{
+  background:#333;
+  color:#fff;
+}
 
-    /* typed subheading with cursor */
-    .sub{
-      margin-top:18px;
-      font-size:40px;
-      font-weight:700;
-      font-family: "Montserrat", sans-serif;
-      color:var(--accent);
-      display:inline-block;
-      position:relative;
-    }
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .about{
+    padding:80px 20px;
+  }
 
-    /* blinking cursor at end */
-    .sub::after{
-      content:"";
-      width:6px;
-      height:38px;
-      background:var(--accent);
-      display:inline-block;
-      margin-left:8px;
-      vertical-align:middle;
-      animation:blink 1s steps(2,end) infinite;
-      border-radius:2px;
-      opacity:0.95;
-    }
-    @keyframes blink{
-      0%,50%{opacity:1}
-      51%,100%{opacity:0}
-    }
+  .about-container{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
 
-    .description{
-      margin-top:22px;
-      color:var(--muted);
-      max-width:640px;
-      font-size:16px;
-    }
+  .about-img img{
+    margin:0 auto;
+  }
 
-    /* socials + button */
-    .controls{
-      margin-top:26px;
-      display:flex;
-      gap:22px;
-      align-items:center;
-    }
+  .underline{
+    margin:20px auto;
+  }
+}
 
-    .socials{
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
 
-    .sbtn{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      display:inline-grid;
-      place-items:center;
-      background:transparent;
-      border:2px solid rgba(201,74,68,0.18);
-      color:var(--accent);
-      cursor:pointer;
-      transition:all .18s ease;
-      backdrop-filter: blur(2px);
-    }
-    .sbtn:hover{
-      transform:translateY(-4px);
-      box-shadow:0 10px 26px rgba(201,74,68,0.12);
-      border-color: rgba(201,74,68,0.35);
-    }
-    .sbtn svg{width:18px;height:18px;opacity:0.95;fill:none;stroke:currentColor;stroke-width:1.8}
+.about h2{
+  color:#000;
+}
 
-    /* glowing hire me button */
-    .hire-wrap{
-      margin-left:18px;
-    }
-    .hire{
-      display:inline-block;
-      padding:14px 36px;
-      border-radius:40px;
-      font-weight:700;
-      letter-spacing:2px;
-      background:linear-gradient(180deg, rgba(201,74,68,0.28), rgba(123,43,40,0.12));
-      border:1px solid rgba(201,74,68,0.32);
-      color:var(--accent);
-      text-decoration:none;
-      box-shadow: 0 8px 40px rgba(201,74,68,0.08), 0 2px 0 rgba(0,0,0,0.4) inset;
-      position:relative;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-    .hire:hover{
-      transform:translateY(-6px);
-      box-shadow:0 20px 50px rgba(201,74,68,0.18), 0 8px 12px rgba(0,0,0,0.6) inset;
-    }
+.hero-text h1,
+.hero-text p{
+  color: #9d145d;
+  opacity: 1;   /* VERY IMPORTANT */
+}
 
-    .hire::before{
-      content:"";
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      width:140%;
-      height:160%;
-      border-radius:40px;
-      filter:blur(18px);
-      background: radial-gradient(circle at 30% 20%, rgba(201,74,68,0.12), transparent 30%);
-      opacity:0.9;
-      z-index:-1;
-    }
 
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{flex-direction:column-reverse; gap:24px}
-      .left,.right{width:100%}
-      .portrait-wrap{width:360px;height:480px}
-      .tagline small{font-size:36px}
-      .sub{font-size:32px}
-    }
-    @media (max-width:520px){
-      .portrait-wrap{width:300px;height:380px}
-      nav ul{display:none} /* hide nav on tiny screens for this demo */
-      .brand{font-size:20px}
-      .page{padding:18px}
-      .tagline{font-size:26px}
-      .sub{font-size:22px}
-      .description{font-size:15px}
-    }
-    .typing-text {
-  color: #ff5a48; /* matches your red theme */
+/* Menu Section */
+        .menu-section {
+            padding: 80px 50px;
+            text-align: center;
+        }
+        .menu-section h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .menu-section hr {
+            width: 60px;
+            height: 4px;
+            background-color: orange;
+            border: none;
+            margin: 0 auto 50px;
+        }
+
+        /* Menu Items */
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        .menu-item {
+            background-color: #302727;
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+            transition: transform 0.3s;
+        }
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        .menu-item img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .menu-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .menu-item p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            .menu-items {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+.menu-section h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: white; /* added: makes the headline white */
+}
+
+
+.menu-section {
+  background-color: #69655f; /* warm cement */
+  padding: 80px 50px;
+  text-align: center;
+}
+
+#products {
+  scroll-margin-top: 120px; /* height of header */
+}
+
+
+
+/* CONTACT SECTION */
+.contact-section {
+  background: #645a56;
+  padding: 100px 80px;
+  text-align: center;
+}
+
+.contact-section h2 {
   font-size: 36px;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #ff5a48; /* blinking line */
-  width: 0;
-  animation: typing 3s steps(20) 1s forwards, blink 0.7s step-end infinite;
+  letter-spacing: 2px;
+  color: #111111;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 240px; } /* adjust based on your text length */
+.contact-underline {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #f9a825;
+  margin: 12px auto 60px;
 }
 
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-#skills {
-  padding: 40px 0;
-  text-align: center;
-}
-
-.skills-grid {
+/* LAYOUT */
+.contact-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 18px;
-  margin-top: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
 }
 
-.skill {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 14px 10px;
-  color: #fff;
-  font-weight: 600;
-  transition: 0.3s;
+/* LEFT INFO */
+.contact-info {
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  line-height: 2;
 }
 
-.skill:hover {
-  background: rgba(201,74,68,0.15);
-  color: #ff5a48;
-  transform: translateY(-5px);
-}
-
-#education {
-  padding: 40px 0;
-  max-width: 800px;
-  margin: auto;
-}
-
-.edu-item {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: 0.3s;
-}
-
-.edu-item:hover {
-  background: rgba(201,74,68,0.1);
-  transform: translateY(-4px);
-}
-
-#education h3 {
-  color: #ff5a48;
-  margin-bottom: 6px;
-}
-
-#education p {
-  color: #ddd;
-  margin: 4px 0;
-}
-#experience {
-  padding: 40px 0;
-  max-width: 800px;
-  margin: auto;
-}
-
-.exp-item {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: 0.3s ease;
-}
-
-.exp-item:hover {
-  background: rgba(201,74,68,0.1);
-  transform: translateY(-4px);
-}
-
-#experience h3 {
-  color: #ff5a48;
-  margin-bottom: 6px;
-}
-
-#experience p {
-  color: #ddd;
-  margin: 4px 0;
-}
-
-
-  
-#contact {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.contact-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 600px;
-  margin: 40px auto;
-  box-shadow: 0 0 30px rgba(201, 74, 68, 0.15);
-  backdrop-filter: blur(6px);
-  transition: 0.3s ease;
-}
-
-.contact-card:hover {
-  box-shadow: 0 0 50px rgba(201, 74, 68, 0.25);
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.contact-btn {
-  display: inline-block;
-  padding: 12px 26px;
-  border-radius: 40px;
-  color: #fff;
-  background: linear-gradient(90deg, #c94a44, #7b2b28);
-  text-decoration: none;
-  font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(201, 74, 68, 0.4);
-}
-
-
-
-
-
+/* FORM */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  max-width: 500px;
-  margin: 40px auto;
+  gap: 20px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 12px;
-  color: #fff;
-  font-size: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #c94a44;
-  box-shadow: 0 0 10px rgba(201,74,68,0.3);
+  border-color: #5a1f1f;
 }
 
+/* BUTTON */
 .contact-form button {
-  background: linear-gradient(90deg, #c94a44, #7b2b28);
-  color: white;
-  border: none;
-  border-radius: 40px;
+  width: 160px;
   padding: 14px;
-  font-weight: 700;
+  background: linear-gradient(90deg, #2b0f0f, #5a1f1f);
+  color: #5c4747;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.3s;
 }
 
 .contact-form button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 20px rgba(201,74,68,0.4);
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-html {
-  scroll-behavior: smooth;
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-section {
+    padding: 80px 20px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form button {
+    margin: 0 auto;
+  }
+}
+.btn{
+  padding:14px 36px;
+  background: linear-gradient(135deg, #c97a3a, #a85f2a);
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all 0.3s ease;
 }
 
-/* Make navbar stay on top */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #0a0a0a; /* or your theme color */
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  z-index: 1000; /* keeps it above everything */
-}
-
-/* Style for navigation links */
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.navbar a:hover {
-  color: #00ffff; /* glow or highlight on hover */
-}
-
-/* Hire Me button */
-.hire-me {
-  background: #00ffff;
-  color: #000;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.hire-me:hover {
-  background: #00cccc;
-}
-
-/* Add top padding to page content so it's not hidden under fixed header */
-body {
-  margin: 0;
-  padding-top: 0px; /* height of navbar */
+.btn:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 35px rgba(201,122,58,0.45);
 }
 
 
-html {
-  scroll-behavior: smooth;
-}
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #000;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: 0.3s;
-  position: relative;
-}
-
-/* highlight hover */
-.navbar a:hover {
-  color: #00ffff;
-}
-
-/* highlight underline for the target section */
-section:target ~ .navbar a[href="#home"],
-section:target ~ .navbar a[href="#services"],
-section:target ~ .navbar a[href="#experience"],
-section:target ~ .navbar a[href="#education"],
-section:target ~ .navbar a[href="#contact"] {
-  color: white;
-}
-
-section:target ~ .navbar a[href="#home"]:target,
-section:target ~ .navbar a[href="#services"]:target,
-section:target ~ .navbar a[href="#experience"]:target,
-section:target ~ .navbar a[href="#education"]:target,
-section:target ~ .navbar a[href="#contact"]:target {
-  color: #974573;
-}
-
-
-  .hero {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  min-heigth: 100vh;
-  padding: 100px;
-}
-
-.left {
-  width: 40%;
-  display: flex;
-  justify-content: center;
-}
-
-.right {
-  width: 60%;
-}
-
-.tagline {
-  margin: 0;
-}
-
-.sub {
-  margin-top: 10px;
-}
-
-.description {
-  margin-top: 15px;
-}
-.sub {
-  font-size: 28px;
-  font-weight: bold;
-  color: #ff4d4d;
-}
-
-.typing {
-  color: rgba(255,255,255,0.95);
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid white;
-  width: 0;
-  animation: typing 3s steps(13) forwards,
-             blink 0.7s step-end infinite;
-}
-
-/* Typing animation */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 13ch; }  /* number of characters in "Web Developer" */
-}
-
-/* Cursor blinking */
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-    
-  </style>
+</style>
 </head>
 <body>
-  <div class="page">
 
-    <header class="navbar">
-      <div class="brand">my portfolio!</div>
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-          
+<header>
+  <div class="logo"><span>HAVENS.</span></div>
+  <nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#Aboutus">About us</a>
+    <a href="#contact">Contact us</a>
+  </nav>
+</header>
 
-        </ul>
-      </nav>
-      <a href="#contact" class="hire-me">hire me</a>
-      
-    </header>
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Start Your Day With<br>Fresh Coffee</h1>
+    <p>
+      Coffee is a popular and beloved beverage enjoyed by people around the world.
+      Awaken your senses with a steaming cup of liquid motivation.
+    </p>
+    <a href="#contact" class="btn">Order Now</a>
+  </div>
+</section>
 
-   
 
-    
-    
 
-      <!-- RIGHT: headings, desc, socials, CTA -->
-       <div class="hero">
-      <div class="right">
-        <h1 class="tagline">Hi, it's <span class="name">jatoth sowmya</span></h1>
-        <div class="sub">I'm a <span style="color:rgba(255,255,255,0.95); margin-left:8px;">Web Developer</span></div>
-        
 
-        <p class="description">
-         im doing my engineering in MALLA REDDY ENGINEERING COLLEGE FOR WOMEN.im currently learing wed development. 
-        </p>
-        
-
-        <div class="controls">
-          
-          <div class="socials" aria-hidden="false">
-             
-            <!-- LinkedIn -->
-             <a href="https://www.linkedin.com/in/jatoth-sowmya-27b888395/" >
-            <button class="sbtn" title="LinkedIn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="3"></rect>
-                <path d="M6 9v9"></path>
-                <path d="M6 7a2 2 0 1 0 0 4"></path>
-                <path d="M10 13v5"></path>
-                <path d="M10 9v1"></path>
-                <path d="M14 9v9"></path>
-              </svg>
-            </button>
-            <div class="socials">
-             </div>
+<section class="menu-section" id="menu">
+        <h2>OUR MENU</h2>
+        <hr>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="hot coffe.jpeg" alt="Hot Beverages">
+                <h3>Hot Beverages</h3>
+                <p>Wide range of steaming hot coffee to make you fresh and light.</p>
             </div>
-             </a>
-            
-            
-
-            <!-- GitHub -->
-             <a class="sbtn" href="https://github.com/jsowmya47-pixel" target="_blank" rel="noopener noreferrer" title="GitHub">
-              
-             <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                 <path d="M12 2c-5 0-9 4-9 9a9 9 0 0 0 6 8.5c.5.1.7-.2.7-.5v-1.9c-2.5.6-3-1.2-3-1.2-.4-1-1-1.3-1-1.3-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2.2 1 2.7.8.1-.7.3-1 .5-1.2-2-.2-4.1-1-4.1-4.5 0-1 .3-1.8.8-2.5-.1-.2-.4-1.2.1-2.5 0 0 .7-.2 2.5.8a8.6 8.6 0 0 1 4.6 0c1.8-1 2.5-.8 2.5-.8.5 1.3.2 2.3.1 2.5.5.7.8 1.5.8 2.5 0 3.5-2.2 4.3-4.2 4.5.3.3.6.8.6 1.7v2.5c0 .3.2.6.7.5A9 9 0 0 0 21 11c0-5-4-9-9-9z"></path>
-              </svg>
-              </button>
-               </a>
-
-            
-
-            <!-- X (Twitter) -->
-             <a href="https://x.com/?lang=en-in" target="_blank" rel="noopener noreferrer" title="twitter">
-            <button class="sbtn" title="X" aria-label="X (Twitter)">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 12 7v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5A4.5 4.5 0 0 0 23 3z"></path>
-              </svg>
-            </button>
-            </a>
-
-            <!-- Instagram -->
-             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram">
-            <button class="sbtn" title="Instagram" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                <path d="M16 11.37a4 4 0 1 1-4.63-4.63"></path>
-                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-              </svg>
-            </button>
-            </a>
-
-          <div class="hire-wrap">
-            <a class="hire" href="#contact">Hire me</a>
-          </div>
+            <div class="menu-item">
+                <img src="cold cofeee.jpeg" alt="Cold Beverages">
+                <h3>Cold Beverages</h3>
+                <p>Creamy and frothy cold coffee to make you cool.</p>
+            </div>
+            <div class="menu-item">
+                <img src="refereshement.jpeg" alt="Refreshment">
+                <h3>Refreshment</h3>
+                <p>Fruit and icy refreshing drink to make you feel refreshed.</p>
+            </div>
         </div>
-      </div>
-    
-    <div class="home-img">
+    </section>
+
+
+
+<section class="Aboutus" id="Aboutus">
+  <!-- about content -->
+</section>
+
+
+<section class="about">
+  <div class="about-container">
+
+    <!-- Image -->
+    <div class="about-img">
+      <img src="cofee shop photo.jpeg" alt="Coffee Talk">
+    </div>
+
+    <!-- Content -->
+    <div class="about-content">
+      <h2 class="about-titile">ABOUT US</h2>
+      <span class="underline"></span>
+
+      <p>
+        At Havens Coffee, we believe coffee is more than just a drink — it’s a moment of calm in a busy world.
+         Every cup we serve is carefully crafted using ethically sourced beans, expertly roasted to bring out rich flavors and comforting aromas. 
+         Whether you’re starting your morning, catching up with friends, or finding focus in the afternoon, Havens is your space to slow down, sip deeply, and feel at home.
+      </p>
+
       
-  
-
-  
-</div>
-
-
-  </div>
-  
-  
-  <section id="services" style="padding:60px 20px; text-align:center; background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.08);">
-  <h2 style="color:#c94a44; font-size:38px; margin-bottom:20px; font-family:'Montserrat',sans-serif;">My Services</h2>
-  <p style="color:#ccc; max-width:700px; margin:0 auto 40px; font-size:16px;">
-    I love building creative and responsive websites with clean design and modern technology.
-    Here are a few things I can do:
-  </p>
-
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:24px;">
-
-    <div style="background:rgba(201,74,68,0.1); border:1px solid rgba(201,74,68,0.3); border-radius:16px; padding:30px; width:280px; box-shadow:0 0 20px rgba(0,0,0,0.4);">
-      <h3 style="color:#fff; font-size:22px; margin-bottom:10px;">🌐 Web Design</h3>
-      <p style="color:#bbb;">I design simple, attractive, and user-friendly website layouts using HTML, CSS, and modern tools.</p>
-    </div>
-
-    <div style="background:rgba(201,74,68,0.1); border:1px solid rgba(201,74,68,0.3); border-radius:16px; padding:30px; width:280px; box-shadow:0 0 20px rgba(0,0,0,0.4);">
-      <h3 style="color:#fff; font-size:22px; margin-bottom:10px;">⚙️ Front-End Development</h3>
-      <p style="color:#bbb;">I create responsive websites that work smoothly on all devices, using HTML, CSS.</p>
-    </div>
-
-    <div style="background:rgba(201,74,68,0.1); border:1px solid rgba(201,74,68,0.3); border-radius:16px; padding:30px; width:280px; box-shadow:0 0 20px rgba(0,0,0,0.4);">
-      <h3 style="color:#fff; font-size:22px; margin-bottom:10px;">🎨 Portfolio Creation</h3>
-      <p style="color:#bbb;">I build personal portfolios for students and developers to showcase their skills and achievements online.</p>
     </div>
 
   </div>
 </section>
 
-<section id="skills">
-  <h2 style="color:#ff5a48;">My Skills</h2>
-  <p>Here are the technologies and tools I work with as a web developer:</p>
 
-  <div class="skills-grid">
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">GitHub</div>
-    <div class="skill">Canva</div>
-  </div>
-</section>
+<section class="contact-section" id="contact">
+  <h2>CONTACT US</h2>
+  <span class="contact-underline"></span>
 
-<section id="education">
-  <h2 style="color:#ff5a48;">Education</h2>
-  
-  <div class="edu-item">
-    <h3>B.Tech in Computer Science and Engineering</h3>
-    <p><strong>Malla Reddy Engineering College for Women</strong></p>
-    <p>2025 – 2029</p>
-    <p>Currently pursuing my B.Tech degree, focusing on web development, programming, and software engineering.</p>
-  </div>
+  <div class="contact-container">
 
-  <div class="edu-item">
-    <h3>Intermediate (MPC)</h3>
-    <p><strong>Sri prathibha junior college for girls.</strong></p>
-    <p>2023 – 2025</p>
-  </div>
-
-  <div class="edu-item">
-     <h3>Secondary School Education</h3>
-    <p><strong>GREEN FIELDS GROUP OF SCHOOLS.</strong></p>
-    <p>Completed in 2023</p>
-  </div>
-</section>
-
-<section id="experience">
-  <h2 style="color:#ff5a48;">Experience</h2>
-
-  
-
-  <div class="exp-item">
-    <h3>Portfolio Website Project</h3>
-    <p><strong>Personal Project</strong> | 2025</p>
-    <p>Designed and developed a personal portfolio using HTML and CSS to showcase my 
-       projects, skills, and achievements.</p>
-  </div>
-
-  <div class="exp-item">
-    <h3>AI web development Participant</h3>
-    <p><strong>Malla Reddy Engineering College for Women</strong> | 2025</p>
-    <p>Participated in an AI web development to understand the basics 
-       of algorithms and model training.</p>
-  </div>
-</section>
-
-
-<section id="contact">
-  <h2 style="color:#ff5a48;">Contact Me</h2>
-
-  <div class="contact-card">
-    <p>Let’s connect and create something amazing together!</p>
-    <div class="contact-links">
-      <a href="https://mail.google.com/jsowmya47@gmail.com" class="contact-btn">📧 Email Me</a>
-      <a href="https://github.com/jsowmya47-pixel" target="_blank" class="contact-btn">💻 GitHub</a>
-      <a href="https://www.linkedin.com/in/jatoth-sowmya-27b888395/" target="_blank" class="contact-btn">🔗 LinkedIn</a>
+    <!-- LEFT INFO -->
+    <div class="contact-info">
+      <p>📍 india, telangana ,hydarabad,uppal</p>
+      <p>✉️ havenscoffee@gmail.com</p>
+      <p>📞 98xxxxxxxx</p>
+      <p>⏰ Monday - Friday: 9:00 AM - 5:00 PM</p>
+      <p>⏰ Saturday: 10:00 AM - 3:00 PM</p>
+      <p>⛔ Sunday: Closed</p>
+      <p>🌐 www.havenscoffee.com</p>
     </div>
+
+    <!-- RIGHT FORM -->
+    <form class="contact-form">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Your email" required>
+      <textarea placeholder="Your message" rows="5" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
   </div>
 </section>
 
 
 
-
-<section id="contact">
-  <h2 style="color:#ff5a48;">Get In Touch</h2>
-
-  <form class="contact-form" action="mailto:jsowmya47@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
-
-
-
-
-
+<footer>
+  © 2026 BrewAI — Portfolio Project by You
+</footer>
 </body>
 </html>
